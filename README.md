@@ -1,2 +1,1 @@
-# swifty_compagnion
-WIP
+42 Project
