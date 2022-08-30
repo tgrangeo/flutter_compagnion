@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.swifty_compagnion">
+    package="com.example.swiftycompagnion">
    <application
         android:label="swifty_compagnion"
         android:name="${applicationName}"

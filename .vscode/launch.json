@@ -1,0 +1,32 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+
+		{
+			"name": "swifty_repo",
+			"request": "launch",
+			"type": "dart",
+			"args":[
+				"--dart-define",
+				"42_DOMAIN=api.intra.42.fr",
+				"--dart-define",
+				"42_CLIENT_ID=4cb702e7f10ae5a81444e166ba2c2cbf8bf5ceba9f439e95d87a797c55e2f191"
+			]
+		},
+		{
+			"name": "swifty_repo (profile mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile"
+		},
+		{
+			"name": "swifty_repo (release mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "release"
+		}
+	]
+}
