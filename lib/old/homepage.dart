@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../styles.dart';
+
+import '../../styles.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title, required this.token}) : super(key: key);
   final String title;
+  final String token;
 
   @override
   State<HomePage> createState() => _HomePage();

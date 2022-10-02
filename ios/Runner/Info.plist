@@ -4,19 +4,20 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.example.swiftycompagnion</string>
-			</array>
-		</dict>
-	</array>
+	<!-- my part-->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+   		<key>NSAllowsArbitraryLoads</key><true/>
+	</dict>
+	<key>CFBundleTypeRole</key>
+             <string>Editor</string>
+	<key>CFBundleURLSchemes</key>
+		<array>
+			<string>com.example.swiftycompagnion</string>
+		</array>
+	<!-- end -->
 	<key>CFBundleDisplayName</key>
-	<string>Swifty Compagnion</string>
+	<string>Swifty</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,7 +25,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>swifty_compagnion</string>
+	<string>swifty</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -55,6 +56,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 </dict>
 </plist>

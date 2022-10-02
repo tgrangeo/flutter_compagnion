@@ -1,64 +1,68 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-import 'pages/loggin.dart';
-import 'pages/homepage.dart';
-import '../styles.dart';
+void main() => runApp(MyApp());
 
-const AUTH_DOMAIN = String.fromEnvironment('42_DOMAIN');
-const AUTH_CLIENT_ID = String.fromEnvironment('42_CLIENT_ID');
-const AUTH_ISSUER = 'https://$AUTH_DOMAIN';
-const BUNDLE_ID = 'com.example.swiftycompagnion';
-const AUTH_REDIRECT_URI = '$BUNDLE_ID://callback';
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
 
-void main() => runApp(const App());
-
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routeInformationProvider: _router.routeInformationProvider,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-      title: 'Swifty_compagnion',
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        child: const Scaffold(
-          body: Center(
-              child: Loggin(title: "loggin",)
-          ),
-        ),
-      ),
-    ),
-    GoRoute(
-      path: '/HomePage',
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        child: const Scaffold(
-          body: Center(
-              child: HomePage(
-            title: "HomePage",
-          )), //Text('HomePage')
-        ),
-      ),
-    )
-  ],
-  errorPageBuilder: (context, state) => MaterialPage(
-    key: state.pageKey,
-    child: Scaffold(
-      body: Center(child: Text(state.error.toString())),
-    ),
-  ),
-);
+class _MyAppState extends State<MyApp> {
+  String? token;
+  @override
+  void initState() {
+    getToken().then((value) => setState(() {
+            token = value;
+          }));
+     
+    }
+  Future<String> getToken() async {
+    final response = await http
+        .post(Uri.parse("https://api.intra.42.fr/oauth/token"), body: {
+      "grant_type": "client_credentials",
+      "client_id":
+          '4cb702e7f10ae5a81444e166ba2c2cbf8bf5ceba9f439e95d87a797c55e2f191',
+      "client_secret":
+          ''//insert secret
+    });
+    final jsonResponse = jsonDecode(response.body);
+    String token1 = jsonResponse["access_token"] as String;
+    return token1;
+  }
 
+  void _request(String pseudo) async {
+    print(token);
+    final response = await http.get(
+        Uri.parse("https://api.intra.42.fr/v2/users/$pseudo"),
+        headers: {"Authorization": "Bearer ${token}"});
+    final jsonResponse2 = jsonDecode(response.body);
+    print(jsonResponse2);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              onSubmitted: _request,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter a pseudo',
+                prefixIcon: Icon(Icons.search_rounded),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}

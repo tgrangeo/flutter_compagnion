@@ -1,6 +1,6 @@
 {
-    "name": "swifty_compagnion",
-    "short_name": "swifty_compagnion",
+    "name": "swifty",
+    "short_name": "swifty",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
