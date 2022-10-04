@@ -14,4 +14,9 @@ abstract class Style {
     scaffoldBackgroundColor: Colors.black,
     brightness: Brightness.light,
   );
+
+  static const errorText = TextStyle(
+    color: Colors.red, 
+    fontSize: 20,
+  );
 }

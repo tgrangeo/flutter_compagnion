@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import './styles.dart' as s;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(MyApp());
+Future main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
@@ -13,34 +18,54 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String? token;
+  bool? exist;
   @override
   void initState() {
     getToken().then((value) => setState(() {
-            token = value;
-          }));
-     
-    }
+          token = value;
+        }));
+  }
+
   Future<String> getToken() async {
-    final response = await http
-        .post(Uri.parse("https://api.intra.42.fr/oauth/token"), body: {
+    print(dotenv.env['SECRET']);
+    final response =
+        await http.post(Uri.parse("${dotenv.env['URL']}/oauth/token"), body: {
       "grant_type": "client_credentials",
-      "client_id":
-          '4cb702e7f10ae5a81444e166ba2c2cbf8bf5ceba9f439e95d87a797c55e2f191',
-      "client_secret":
-          ''//insert secret
+      "client_id": dotenv.env['UID'],
+      "client_secret": dotenv.env['SECRET']
     });
-    final jsonResponse = jsonDecode(response.body);
-    String token1 = jsonResponse["access_token"] as String;
-    return token1;
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      String token1 = jsonResponse["access_token"] as String;
+      return token1;
+    } else {
+      return '';
+    }
   }
 
   void _request(String pseudo) async {
-    print(token);
-    final response = await http.get(
-        Uri.parse("https://api.intra.42.fr/v2/users/$pseudo"),
-        headers: {"Authorization": "Bearer ${token}"});
-    final jsonResponse2 = jsonDecode(response.body);
-    print(jsonResponse2);
+    try {
+      final response = await http.get(
+          Uri.parse("${dotenv.env['URL']}/v2/users/$pseudo"),
+          headers: {"Authorization": "Bearer ${token}"});
+      switch (response.statusCode) {
+        case 200:
+          {
+            final dynamic jsonResponse = jsonDecode(response.body);
+            print(jsonResponse);
+            return;
+          }
+        default:
+          throw Exception(response.reasonPhrase);
+      }
+    } catch (e) {
+      print(e);
+      setState(() {
+        exist = false;
+      });
+      return;
+    }
   }
 
   @override
@@ -60,6 +85,11 @@ class _MyAppState extends State<MyApp> {
                 prefixIcon: Icon(Icons.search_rounded),
               ),
             ),
+            exist == false
+                ? //display error message when pseudo don't exist
+                const Text('pseudo not found, try again',
+                    style: s.Style.errorText)
+                : const Text(''),
           ],
         ),
       ),
