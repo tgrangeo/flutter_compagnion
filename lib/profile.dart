@@ -10,6 +10,7 @@ class Profile {
   late String email;
   late String mobile;
   late int year;
+  late int wallet;
   late double level;
 
   // constructor
@@ -20,5 +21,6 @@ class Profile {
     mobile = json["phone"] as String;
     level = json["cursus_users"][1]["level"];
     year = int.parse(json["pool_year"]);
+    wallet = json["wallet"];
   }
 }

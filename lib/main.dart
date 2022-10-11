@@ -118,6 +118,7 @@ class _SearchPageState extends State<SearchPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
+              autocorrect: false,
               controller: TextController,
               onSubmitted: _request,
               decoration: const InputDecoration(

@@ -1,11 +1,12 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
-import './styles.dart' as s;
-import 'package:http/http.dart' as http; //request api
-import 'package:flutter_dotenv/flutter_dotenv.dart'; //environment variable
-import 'dart:convert'; //convert json
+import './styles.dart' as s; //convert json
 import './profile.dart';
+
+//widget
+import 'widget/profile_picture.dart';
+import 'widget/main_info.dart';
 
 class SecondRoute extends StatefulWidget {
   final dynamic json;
@@ -32,17 +33,9 @@ class _SecondPageState extends State<SecondRoute> {
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.black,
-                radius: 95,
-                child: CircleAvatar(
-                  radius: 90,
-                  backgroundImage: NetworkImage(personne.picture),
-                ),
-              ),
-              Text("login: ${personne.login}"),
-              Text("level: ${personne.level}"),
+            children: <Widget>[
+              ProfilePicture(p: personne),
+              MainInfo(p: personne),
               OutlinedButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, "search");
