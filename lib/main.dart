@@ -67,7 +67,6 @@ class _SearchPageState extends State<SearchPage> {
       switch (response.statusCode) {
         case 200:
           final dynamic jsonResponse = jsonDecode(response.body);
-          //print(jsonResponse);
           goToProfile(jsonResponse);
           return;
         default:
@@ -93,7 +92,6 @@ class _SearchPageState extends State<SearchPage> {
       switch (response.statusCode) {
         case 200:
           final dynamic jsonResponse = json.decode(response.body);
-          print(jsonResponse);
           goToProfile(jsonResponse);
           return;
         default:

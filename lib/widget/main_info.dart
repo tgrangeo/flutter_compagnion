@@ -34,6 +34,14 @@ class MainInfo extends StatelessWidget {
           decoration: s.Style.box,
           child: Column(
             children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text("name: ${p.real_name}", textAlign: TextAlign.left),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text("campus: ${p.campus}", textAlign: TextAlign.left),
+              ),
               Row(
                 children: [
                   Padding(
@@ -52,7 +60,12 @@ class MainInfo extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("pool_year: ${p.year}", textAlign: TextAlign.left),
+                child: Text("evaluation points: ${p.eval_point}",
+                    textAlign: TextAlign.left),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text("year: ${p.year}", textAlign: TextAlign.left),
               ),
               Align(
                 alignment: Alignment.centerLeft,

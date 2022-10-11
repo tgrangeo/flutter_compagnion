@@ -7,6 +7,7 @@ import './profile.dart';
 //widget
 import 'widget/profile_picture.dart';
 import 'widget/main_info.dart';
+import 'widget/last_projects.dart';
 
 class SecondRoute extends StatefulWidget {
   final dynamic json;
@@ -22,7 +23,6 @@ class _SecondPageState extends State<SecondRoute> {
   @override
   void initState() {
     personne = Profile(widget.json);
-    print(personne.email);
   }
 
   @override
@@ -36,6 +36,7 @@ class _SecondPageState extends State<SecondRoute> {
             children: <Widget>[
               ProfilePicture(p: personne),
               MainInfo(p: personne),
+              LastProjects(p: personne),
               OutlinedButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, "search");
