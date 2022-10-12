@@ -21,7 +21,11 @@ abstract class Style {
 
   static final box = BoxDecoration(
     borderRadius: BorderRadius.circular(12.0),
-    color: Color.fromARGB(94, 144, 144, 160), 
+    color: Color.fromARGB(143, 200, 200, 200),
+  );
+
+  static const background = BoxDecoration(
+    image:  DecorationImage(image: AssetImage('lib/assets/background.png'), fit: BoxFit.fill, opacity: 0.33),
   );
 
   static const loginText = TextStyle(
@@ -29,6 +33,5 @@ abstract class Style {
     fontSize: 18,
     color: Colors.black,
     height: 1,
-    
   );
 }

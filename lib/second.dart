@@ -8,6 +8,7 @@ import './profile.dart';
 import 'widget/profile_picture.dart';
 import 'widget/main_info.dart';
 import 'widget/last_projects.dart';
+import 'widget/skills.dart';
 
 class SecondRoute extends StatefulWidget {
   final dynamic json;
@@ -28,22 +29,28 @@ class _SecondPageState extends State<SecondRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 160),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              ProfilePicture(p: personne),
-              MainInfo(p: personne),
-              LastProjects(p: personne),
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, "search");
-                },
-                child: const Text('Go back!'),
-              ),
-            ],
+      body: Container( 
+        decoration: s.Style.background,
+        child:SizedBox(
+          width: 600,
+          child: SingleChildScrollView(
+            child: Column(
+             // mainAxisSize: MainAxisSize.max,
+             //mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                ProfilePicture(p: personne),
+                MainInfo(p: personne),
+                LastProjects(p: personne),
+                Skills(p: personne),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, "search");
+                  },
+                  child: const Text('Go back!'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -7,13 +7,16 @@ class ProfilePicture extends StatelessWidget {
   const ProfilePicture({super.key, required this.p});
   @override
   Widget build(BuildContext context) {
-   return CircleAvatar(
-      backgroundColor: Colors.black,
-      radius: 95,
+    return Padding(
+      padding: EdgeInsets.only(top: 53),
       child: CircleAvatar(
-        radius: 90,
-        backgroundImage: NetworkImage(p.picture),
+        backgroundColor: Colors.black,
+        radius: 95,
+        child: CircleAvatar(
+          radius: 90,
+          backgroundImage: NetworkImage(p.picture),
+        ),
       ),
     );
   }
-  }
+}

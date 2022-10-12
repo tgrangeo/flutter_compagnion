@@ -110,11 +110,21 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      body: Padding(
+            body: Container(
+      decoration: s.Style.background,
+      child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(
+              width: 300,
+              child:Padding(
+                padding: EdgeInsets.only(top:200, bottom: 50),
+                child: Image(
+                  image: AssetImage('lib/assets/logo.png'),fit: BoxFit.cover),
+              )
+            ),
             TextField(
               autocorrect: false,
               controller: TextController,
@@ -139,6 +149,6 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-    ));
+    )));
   }
 }
