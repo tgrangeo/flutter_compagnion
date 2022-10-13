@@ -11,17 +11,25 @@ class MainInfo extends StatelessWidget {
     return res;
   }
 
+  String getLogin() {
+    if (p.login == "frfrey") {
+      return "Awesome frfrey";
+    } else {
+      return p.login;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
         margin: const EdgeInsets.only(top: 10),
-        width: 240.0,
+        width: 360.0,
         height: 42.0,
         decoration: s.Style.box,
         child: Center(
           child: Text(
-            p.login,
+            getLogin(),
             style: s.Style.loginText,
             textAlign: TextAlign.center,
           ),
@@ -30,26 +38,31 @@ class MainInfo extends StatelessWidget {
       Container(
           margin: const EdgeInsets.only(top: 15),
           padding: const EdgeInsets.all(10),
-          width: 240.0,
+          width: 360.0,
           decoration: s.Style.box,
           child: Column(
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("name: ${p.real_name}", textAlign: TextAlign.left),
+                child: Text(
+                  "name: ${p.real_name}",
+                  textAlign: TextAlign.left,
+                  style: s.Style.TextDiv,
+                ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("campus: ${p.campus}", textAlign: TextAlign.left),
+                child: Text("campus: ${p.campus}",
+                    textAlign: TextAlign.left, style: s.Style.TextDiv),
               ),
               Row(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
-                    child: Text("level: ${p.level}"),
+                    child: Text("level: ${p.level}", style: s.Style.TextDiv),
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 160,
                     child: LinearProgressIndicator(
                       value: getLevel(),
                       backgroundColor: Colors.grey.shade500,
@@ -59,17 +72,18 @@ class MainInfo extends StatelessWidget {
                 ],
               ),
               Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("evaluation points: ${p.eval_point}",
+                      textAlign: TextAlign.left, style: s.Style.TextDiv)),
+              Align(
                 alignment: Alignment.centerLeft,
-                child: Text("evaluation points: ${p.eval_point}",
-                    textAlign: TextAlign.left),
+                child: Text("year: ${p.year}",
+                    textAlign: TextAlign.left, style: s.Style.TextDiv),
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("year: ${p.year}", textAlign: TextAlign.left),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text("wallet: ${p.wallet}", textAlign: TextAlign.left),
+                child: Text("wallet: ${p.wallet}",
+                    textAlign: TextAlign.left, style: s.Style.TextDiv),
               ),
             ],
           )),

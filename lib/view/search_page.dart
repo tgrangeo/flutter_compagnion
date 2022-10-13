@@ -30,7 +30,6 @@ class _SearchPageState extends State<SearchPage> {
       "client_id": dotenv.env['UID'],
       "client_secret": dotenv.env['SECRET']
     });
-    print(response.statusCode);
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
       String token1 = jsonResponse["access_token"] as String;
@@ -80,8 +79,6 @@ class _SearchPageState extends State<SearchPage> {
     if (pseudo == "") {
       return;
     }
-    print(Uri.parse("${dotenv.env['URL']}/v2/users/$pseudo"));
-    print(token);
     try {
       final response = await http.get(
           Uri.parse("${dotenv.env['URL']}/v2/users/$pseudo"),
@@ -117,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
             const SizedBox(
                 width: 300,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 200, bottom: 50),
+                  padding: EdgeInsets.only(top: 140, bottom: 50),
                   child: Image(
                       image: AssetImage('assets/logo.png'), fit: BoxFit.cover),
                 )),
@@ -141,6 +138,10 @@ class _SearchPageState extends State<SearchPage> {
               style: s.Style.button,
               child: const Text('search'),
             ),
+            const Padding(
+              padding: EdgeInsets.only(top: 310),
+              child: Text("made by tgrangeo"),
+            )
           ],
         ),
       ),

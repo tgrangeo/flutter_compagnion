@@ -11,9 +11,9 @@ class ProfilePicture extends StatelessWidget {
       padding: EdgeInsets.only(top: 53),
       child: CircleAvatar(
         backgroundColor: Colors.black,
-        radius: 95,
+        radius: 125,
         child: CircleAvatar(
-          radius: 90,
+          radius: 120,
           backgroundImage: NetworkImage(p.picture),
         ),
       ),

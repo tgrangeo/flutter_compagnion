@@ -29,6 +29,13 @@ class _SecondPageState extends State<SecondRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, "search");
+        },
+        backgroundColor: Color.fromARGB(255, 116, 116, 116),
+        child: const Icon(Icons.arrow_back_ios_new),
+      ),
       body: Container(
         decoration: s.Style.background,
         child: SizedBox(
@@ -44,18 +51,12 @@ class _SecondPageState extends State<SecondRoute> {
                   padding: EdgeInsets.only(bottom: 10),
                   child: Skills(p: personne),
                 ),
-                OutlinedButton(
-                  style: s.Style.button,
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "search");
-                  },
-                  child: const Text('Go back!'),
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
     );
   }
 }

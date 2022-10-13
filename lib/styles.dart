@@ -19,13 +19,27 @@ abstract class Style {
   );
 
   static const background = BoxDecoration(
-    image:  DecorationImage(image: AssetImage('assets/background.png'), fit: BoxFit.fill, opacity: 0.33),
+    image: DecorationImage(
+        image: AssetImage('assets/background.png'),
+        fit: BoxFit.fill,
+        opacity: 0.33),
   );
 
   static const loginText = TextStyle(
-    fontFamily: 'Arial',
-    fontSize: 18,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
     color: Colors.black,
     height: 1,
+  );
+
+  static const TextDiv = TextStyle(
+    fontSize: 22,
+    height: 1.5,
+  );
+
+  static const TextTitle = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+    decoration: TextDecoration.underline,
   );
 }
