@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../styles.dart' as s;
-import '../profile.dart';
+import '../model/profile.dart';
 
 class Skills extends StatelessWidget {
   final Profile p;

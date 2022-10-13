@@ -17,15 +17,6 @@ class Profile {
   late double level;
   late List<String> last_project = [];
   late Map<String, double> skills = {};
-  // late Map<String, double> skills = {
-  //   "tft": 9.32,
-  //   "valo": 5.78,
-  //   "apex": 6.89,
-  //   "apex1": 6.89,
-  //   "apex2": 6.89,
-  //   "apex3": 6.89,
-  //   "apex4": 6.89
-  // };
 
   // constructor
   Profile(json) {

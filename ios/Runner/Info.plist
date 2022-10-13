@@ -17,7 +17,7 @@
 		</array>
 	<!-- end -->
 	<key>CFBundleDisplayName</key>
-	<string>Swifty</string>
+	<string>Companion</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
