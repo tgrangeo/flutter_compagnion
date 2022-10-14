@@ -1,16 +1,3 @@
-# swifty
+Hi,
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is my very first Flutter project, it's about create an app who will connect to the school 42 API. We can print any student profile.   ![2022_10_14_0l9_Kleki](https://user-images.githubusercontent.com/53308638/195829158-77e0c50a-fe90-4a05-9793-7c255632c53f.png)![2022_10_14_0lb_Kleki](https://user-images.githubusercontent.com/53308638/195829166-2247880d-ef8b-4e64-a676-2b0b249d9128.png)
