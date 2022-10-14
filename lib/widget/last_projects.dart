@@ -5,6 +5,16 @@ import '../model/profile.dart';
 class LastProjects extends StatelessWidget {
   final Profile p;
   const LastProjects({super.key, required this.p});
+
+
+  Widget getText(key){
+    if(p.projects[key] == true){
+      return Text(key,style: s.Style.projectDone);
+    }else{
+      return Text(key,style: s.Style.projectFailed);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +26,7 @@ class LastProjects extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text(
-              "last projects validated:",
+              "last projects:",
               style: s.Style.TextTitle,
               textAlign: TextAlign.center,
             ),
@@ -27,16 +37,18 @@ class LastProjects extends StatelessWidget {
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(4),
                 itemBuilder: (BuildContext context, int index) {
+                  String key = p.projects.keys.elementAt(index);
                   return ConstrainedBox(
                       constraints: BoxConstraints.expand(height: 35),
                       child: SizedBox(
                         height: 18,
                         child: Center(
-                            child: Text(p.last_project[index],
-                                style: s.Style.TextDiv)),
-                      ));
+                            child: getText(key),
+                          )
+                        )
+                  );
                 },
-                itemCount: p.last_project.length),
+                itemCount: p.projects.length),
           ),
         ],
       ),

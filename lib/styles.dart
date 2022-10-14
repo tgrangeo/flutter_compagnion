@@ -42,4 +42,14 @@ abstract class Style {
     fontWeight: FontWeight.bold,
     decoration: TextDecoration.underline,
   );
+  static const projectFailed = TextStyle(
+    color: Colors.red,
+    fontSize: 22,
+    height: 1.5,
+  );
+  static const projectDone = TextStyle(
+    color: Colors.green,
+    fontSize: 22,
+    height: 1.5,
+  );
 }
