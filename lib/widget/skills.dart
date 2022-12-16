@@ -8,9 +8,10 @@ class Skills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double maxWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      width: 360.0,
+      width: maxWidth * 0.8,
       decoration: s.Style.box,
       child: Column(
         children: [
@@ -32,15 +33,16 @@ class Skills extends StatelessWidget {
                   return Column(
                     children: [
                       ConstrainedBox(
-                        constraints: BoxConstraints.expand(height: 60),
+                        constraints: const BoxConstraints.expand(height: 60),
                         child: Column(children: [
                           Text(key,
                               textAlign: TextAlign.left,
-                              style: s.Style.TextDiv),
+                              style: s.Style.TextDiv,
+                              maxLines: 1,),
                           SizedBox(
-                              width: 300,
+                              width: maxWidth * 0.7,
                               child: Padding(
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 child: LinearProgressIndicator(
                                   value: p.skills[key]! / 20.0,
                                   backgroundColor: Colors.grey.shade500,

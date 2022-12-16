@@ -17,9 +17,10 @@ class LastProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double maxWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      width: 360.0,
+      width: maxWidth * 0.8,
       decoration: s.Style.box,
       child: Column(
         children: [
@@ -39,7 +40,7 @@ class LastProjects extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   String key = p.projects.keys.elementAt(index);
                   return ConstrainedBox(
-                      constraints: BoxConstraints.expand(height: 35),
+                      constraints: const BoxConstraints.expand(height: 35),
                       child: SizedBox(
                         height: 18,
                         child: Center(

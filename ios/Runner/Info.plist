@@ -26,7 +26,7 @@
 	<string>Editor</string>
 	<key>CFBundleURLSchemes</key>
 	<array>
-		<string>com.example.swiftycompagnion</string>
+		<string>com.example.flutter_companioncompagnion</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
