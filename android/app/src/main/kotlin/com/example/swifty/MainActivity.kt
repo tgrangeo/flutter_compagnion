@@ -1,4 +1,4 @@
-package com.example.swifty
+package com.example.flutter_companion
 
 import io.flutter.embedding.android.FlutterActivity
 

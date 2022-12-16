@@ -21,10 +21,12 @@ class MainInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   double maxWidth = MediaQuery.of(context).size.width;
+   //double maxHeight = MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Column(children: [
       Container(
         margin: const EdgeInsets.only(top: 10),
-        width: 360.0,
+        width: maxWidth * 0.8,
         height: 42.0,
         decoration: s.Style.box,
         child: Center(
@@ -38,7 +40,7 @@ class MainInfo extends StatelessWidget {
       Container(
           margin: const EdgeInsets.only(top: 15),
           padding: const EdgeInsets.all(10),
-          width: 360.0,
+          width: maxWidth * 0.8,
           decoration: s.Style.box,
           child: Column(
             children: [
@@ -62,7 +64,7 @@ class MainInfo extends StatelessWidget {
                     child: Text("level: ${p.level}", style: s.Style.TextDiv),
                   ),
                   SizedBox(
-                    width: 160,
+                    width: maxWidth * 0.35,
                     child: LinearProgressIndicator(
                       value: getLevel(),
                       backgroundColor: Colors.grey.shade500,
